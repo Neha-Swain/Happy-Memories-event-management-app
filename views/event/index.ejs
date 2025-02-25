@@ -1,0 +1,27 @@
+<%- include('../partials/header.ejs') %>
+<div class="content">
+    <div class="center-container mb-100">
+        <% if(categories.length){ %>
+            <% categories.forEach(category => { %>
+            <% 
+            const categoryEvents = events.filter(event => event.category === category);
+            if (categoryEvents.length) { 
+            %>
+            <div class="listing">
+                <h3><%= category %></h3>
+                <ol>
+                    <% categoryEvents.forEach(event => { %>
+                        <li><a href="/events/<%= event.id %>"><%= event.title %></a></li>
+                    <% }); %>
+                </ol>
+            </div>
+            <% } %>
+            <% }); %>
+        <% } else { %>
+            <p>There are no categories to display.</p>
+        <% } %>
+    </div>
+</div>
+<%- include('../partials/footer.ejs') %> 
+
+

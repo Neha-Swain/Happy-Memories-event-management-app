@@ -1,0 +1,21 @@
+<%- include('../partials/header.ejs') %>
+<div class="content">
+    <div class="center-container">
+        <form action = '/users' method = 'POST' class="mt-20">
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" name="firstName" class = "fixed-width" required>
+
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" name="lastName" class = "fixed-width" required>
+        
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" class = "fixed-width" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" class = "fixed-width" required>
+
+            <button class="button submit-btn mb-100">Register</button>
+        </form>
+    </div>
+</div>
+<%- include('../partials/footer.ejs') %>

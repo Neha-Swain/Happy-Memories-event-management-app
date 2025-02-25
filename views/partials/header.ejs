@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Happy Memories</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="header">
+        <a href="/"><img class="logo" style="margin-top:10px; margin-left:40px" src="/images/logo.jpeg" alt="Logo"></a>
+        <ul class="header-right">
+            <% if(!user){ %>
+                <li><a href="/users/login">Login</a></li>
+                <li><a href="/users/new">Signup</a></li>
+           <% } else { %>
+        <li><a href="/events/new">Start a New Event</a></li>
+        <li><a href='/users/profile'><%= firstName%>'s Profile</a></li>
+        <li><a href='/users/logout'>Logout</a></li>
+            <% } %>
+        </ul>
+        <hr class="header-seprator">
+        <ul>
+        <li><a href="/events">Events</a></li>
+        </ul>
+    </div>
+
+    <% if(errorMessages.length > 0) {%>
+        <% errorMessages.forEach(message=>{%>
+            <div class='error'>
+                <%=message%>
+            </div>
+        <%});%>
+    <%}%>
+    
+    <% if(successMessages.length > 0) {%>
+        <% successMessages.forEach(message=>{%>
+            <div class='success'>
+                <%=message%>
+            </div>
+        <%});%>
+    <%}%>

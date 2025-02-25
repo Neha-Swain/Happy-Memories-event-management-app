@@ -1,0 +1,49 @@
+
+<%- include('../partials/header.ejs')%>
+<div class="content">
+    <div class="center-container mb-100">
+        <div class="event-heading">
+            <h3 class="dis-in-bl"><%=user.firstName%>'s Events</h3>
+        </div>
+        <% if(events.length){ %>
+        <table>
+            <% events.forEach(event => { %>
+            <tr>
+                <td><%= event.name %></td>
+                <td><a href="/events/<%= event._id %>"><%= event.title %></a></td>
+                <td>
+                    <form style="float: left;">
+                        <button class="button" type="submit" formmethod="GET" formaction="/events/<%= event.id %>/edit">Edit</button>
+                        <button class="button" type="submit" formmethod="POST" formaction="/events/<%= event.id %>?_method=DELETE">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            <% }); %>
+        </table>
+        <% } else { %>
+            <p style="margin: 20px auto;width: 95%;">There are no events to display.</p>
+        <% } %>
+
+        <div class="event-heading" style="margin-top: 50px;">
+            <h3 class="dis-in-bl"><%=user.firstName%>'s Rsvp</h3>
+        </div> 
+        <% if(rsvps.length){ %>
+        <table>
+            <% rsvps.forEach(rsvp => { %>
+            <tr>
+                <td><a href="/events/<%= rsvp.event._id %>"><%= rsvp.event.title%></a>   </td>
+                <td>&nbsp &nbsp Response -- <b><%= rsvp.status %></b></td>
+                <td>
+                    <form style="float: left;">
+                        <button class="button" type="submit" formmethod="POST" formaction="/events/rsvp/<%= rsvp._id %>?_method=DELETE">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            <% }); %>
+        </table>
+        <% } else { %>
+            <p style="margin: 20px auto;width: 95%;">There are no RSVP to display.</p>
+        <% } %>
+    </div>
+</div>
+<%- include('../partials/footer.ejs')%>

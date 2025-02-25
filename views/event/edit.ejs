@@ -1,0 +1,43 @@
+<%- include('../partials/header.ejs') %>
+<div class="content">
+    <div class="center-container">
+        <form action = '/events/<%= event.id%>?_method=PUT' method = 'POST' class="mt-20">
+            <label for="category">Category</label>
+            <select id="category" name="category" required>
+                <option value="" ><%= event.category %></option>
+                <option value="Marriage">Marriage</option>
+                <option value="Bachelorette">Bachelorette</option>
+                <option value="Anniversary">Anniversary</option>
+                <option value="Gender Reveal">Gender Reveal</option>
+                <option value="Birthday"> Birthday </option>
+                <option value="other">Other</option>
+            </select>
+
+
+            <label for="title">Title</label>
+            <input type="text" id="title" name="title" placeholder="Enter title.." value="<%= event.title %>">
+
+            <label for="details">Detail</label>
+            <textarea id="details" name="details" placeholder="Enter detail.."><%= event.details %></textarea>
+
+            <label for="location">Location</label>
+            <input type="text" id="location" name="location" placeholder="Enter location.." value="<%= event.location %>">
+
+            <label for="startDate">Start Date/Time</label>
+            <input type="datetime-local" id="startDate" name="startDate" value="<%= event.startDate%>"> 
+
+            <br><br>
+            <label for="endDate">End Date/Time</label>
+            <input type="datetime-local" id="endDate" name="endDate" value="<%= event.endDate%>">
+            <br><br>
+
+            <label for="image" >Image</label>
+            <input type="url" id="image" name="image" placeholder="Enter image url.." accept="image/*" >
+        
+         
+            <button class="button submit-btn mb-100">Update Event</button>
+
+        </form>
+    </div>
+</div>
+<%- include('../partials/footer.ejs') %>
